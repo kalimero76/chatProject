@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">ChatProject</string>
+    <string name="login">login</string>
+    <string name="passWord">password</string>
 </resources>

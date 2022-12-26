@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/MessagesListFragment"
+    app:startDestination="@id/messagesListFragment">
+
+
+    <fragment
+        android:id="@+id/messagesListFragment"
+        android:name="ca.qc.chatproject.MessagesListFragment"
+        android:label="fragment_messages_list"
+        tools:layout="@layout/fragment_messages_list" >
+
+        <action
+            android:id="@+id/action_messagesListFragment_to_messageFragment"
+            app:destination="@id/messageFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/usersListFragment"
+        android:name="ca.qc.chatproject.UsersListFragment"
+        android:label="fragment_users_list"
+        tools:layout="@layout/fragment_users_list" />
+    <fragment
+        android:id="@+id/messageFragment"
+        android:name="ca.qc.chatproject.MessageFragment"
+        android:label="fragment_message"
+        tools:layout="@layout/fragment_message" >
+        <action
+            android:id="@+id/action_messageFragment_to_usersListFragment2"
+            app:destination="@id/usersListFragment" />
+    </fragment>
+</navigation>

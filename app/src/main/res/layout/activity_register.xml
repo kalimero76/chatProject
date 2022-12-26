@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".RegisterActivity">
+
+    <TextView
+        android:id="@+id/txtCreationCompte"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:text="@string/txtCreationCompte"
+        android:textAlignment="center"
+        android:textAllCaps="true"
+        android:textColor="#C89C27B0"
+        android:textSize="34sp"
+        android:textStyle="bold"
+        android:typeface="normal" />
+
+    <TextView
+        android:id="@+id/txtLogin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/txtMatricule"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <EditText
+        android:id="@+id/loginRegister"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:autofillHints=""
+        android:ems="10"
+        android:hint="@string/txtIdmatricule"
+        android:inputType="textPersonName"
+        android:minHeight="48dp"
+        android:textSize="14sp" />
+
+    <TextView
+        android:id="@+id/txtNom"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/txtNom"
+        android:textAllCaps="false"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <EditText
+        android:id="@+id/txtIdnom"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:autofillHints=""
+        android:ems="10"
+        android:hint="@string/txtIdnom"
+        android:inputType="textPersonName"
+        android:minHeight="48dp"
+        android:textSize="14sp" />
+
+    <TextView
+        android:id="@+id/txtPrenom"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/txtPrenom"
+        android:textAllCaps="false"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+
+    <TextView
+        android:id="@+id/txtMotdepasse"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/txtMotdepasse"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <EditText
+        android:id="@+id/motpassRegister"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:autofillHints=""
+        android:ems="10"
+        android:hint="@string/txtIdmotdepasse"
+        android:inputType="textPersonName"
+        android:minHeight="48dp"
+        android:textSize="14sp" />
+
+    <TextView
+        android:id="@+id/txtConfirmer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/txtConfirmer"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <EditText
+        android:id="@+id/confirmerRegister"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:autofillHints=""
+        android:ems="10"
+        android:hint="@string/txtIdconfirmer"
+        android:inputType="textPersonName"
+        android:minHeight="48dp"
+        android:textColorHint="#757575"
+        android:textSize="14sp" />
+
+    <Button
+        android:id="@+id/btnCreerCompteRegister"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="@string/btnCreerCompte"
+        android:textAlignment="center"
+        android:textSize="20sp" />
+
+</LinearLayout>

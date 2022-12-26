@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/MessagesListFragment"
+        android:icon="@android:drawable/ic_dialog_email"
+        android:title="@string/messageragment" />
+    <item
+        android:id="@+id/UsersListFragment"
+        android:icon="@drawable/ic_baseline_groups_24"
+        android:title="@string/usersFragment" />
+    <item
+        android:id="@+id/MessageFragment"
+        android:icon="@android:drawable/stat_notify_chat"
+        android:title="@string/newmessageragment" />
+</menu>

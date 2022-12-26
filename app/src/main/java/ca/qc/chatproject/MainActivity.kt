@@ -19,13 +19,15 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var usersViewModel: UsersViewModel
 
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         binding = ActivityMainBinding.inflate(layoutInflater)
 
         val adapter = UsersAdapter()
-        binding.iduserRv.adapter= adapter
+         //binding.fragmentContainerView.usrecyclerviewUsersListFragment.adapter= adapter
 
         val usersRepository = UsersRepository()
         val viewModelProviderFactory = UsersViewModelProviderFactory(usersRepository)

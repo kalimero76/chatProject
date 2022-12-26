@@ -2,4 +2,39 @@
     <string name="app_name">ChatProject</string>
     <string name="login">login</string>
     <string name="passWord">password</string>
+    <string name="txtTitre"> Petits gazouillis</string>
+    <string name="txtAFE"> A. F. El.</string>
+
+
+    <string name="txtNcompte">Nouveau compte</string>
+    <string name="txtConnexion">Connexion</string>
+    <string name="etMatricule">Identifiant</string>
+    <string name="etPassword">Mot de passe</string>
+    <string name="chkConnexion">Se souvenir de moi</string>
+    <string name="txtBienvenue">Identifiez-vous!</string>
+    <string name="txtBooketco">Par Book et co</string>
+    <string name="txtNom">Nom</string>
+    <string name="txtIdnom">Entrer votre nom</string>
+    <string name="txtPrenom">Prénom</string>
+    <string name="txtIdprenom">Entrer votre prénom</string>
+    <string name="txtMatricule">Matricule</string>
+    <string name="txtIdmatricule">Entrer votre matricule</string>
+    <string name="txtMotdepasse">Mot de passe</string>
+    <string name="txtIdmotdepasse">Entrer votre mot de passe</string>
+    <string name="txtConfirmer">Confirmer</string>
+    <string name="txtIdconfirmer">Confirmer votre mot de passe</string>
+    <string name="btnCreerCompte">Créer votre compte</string>
+    <string name="txtCreationCompte">Création de compte</string>
+
+    <string name="btnSoumettre">Soumettre</string>
+    <string name="txtRecherche">Rechercher</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+
+    //fragment string
+
+    <string name="usersFragment">usersFragment</string>
+    <string name="messageragment">messagesFragment</string>
+    <string name="newmessageragment">newmessagesFragment</string>
 </resources>

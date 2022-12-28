@@ -2,7 +2,7 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/MessagesListFragment"
+    android:id="@+id/messages_nav_graph"
     app:startDestination="@id/messagesListFragment">
 
 
@@ -10,7 +10,7 @@
         android:id="@+id/messagesListFragment"
         android:name="ca.qc.chatproject.MessagesListFragment"
         android:label="fragment_messages_list"
-        tools:layout="@layout/fragment_messages_list" >
+        tools:layout="@layout/fragment_messages_list">
 
         <action
             android:id="@+id/action_messagesListFragment_to_messageFragment"

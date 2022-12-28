@@ -34,7 +34,7 @@
 
     //fragment string
 
-    <string name="usersFragment">usersFragment</string>
-    <string name="messageragment">messagesFragment</string>
-    <string name="newmessageragment">newmessagesFragment</string>
+    <string name="usersFragment">users List Fragment</string>
+    <string name="messagefragment">messagesFragment</string>
+    <string name="messagesList">newmessages List Fragment</string>
 </resources>

@@ -21,8 +21,8 @@ class UsersAdapter: RecyclerView.Adapter<UsersAdapter.UserViewHolder>() {
 
         fun bind(position: Int) {
             val user= users[position]
-            login.text=user.login.toString()
-            passeword.text= user.password.toString()
+            login.text=user.login
+            passeword.text= user.password
         }
 
     }
@@ -44,8 +44,8 @@ class UsersAdapter: RecyclerView.Adapter<UsersAdapter.UserViewHolder>() {
 
     }
 
-    fun setUsers(users: List<UserData>){
-        this.users = users
+    fun setUsers(usersa: List<UserData>){
+        this.users = usersa
         notifyDataSetChanged()
     }
 

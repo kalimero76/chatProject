@@ -2,15 +2,15 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/MessagesListFragment"
+        android:id="@+id/messagesListFragment"
         android:icon="@android:drawable/ic_dialog_email"
-        android:title="@string/messageragment" />
+        android:title="@string/messagesList" />
     <item
-        android:id="@+id/UsersListFragment"
+        android:id="@+id/usersListFragment"
         android:icon="@drawable/ic_baseline_groups_24"
         android:title="@string/usersFragment" />
     <item
-        android:id="@+id/MessageFragment"
+        android:id="@+id/messageFragment"
         android:icon="@android:drawable/stat_notify_chat"
-        android:title="@string/newmessageragment" />
+        android:title="@string/messagefragment" />
 </menu>

@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/messages_nav_graph"
-    app:startDestination="@id/messagesListFragment">
+    app:startDestination="@id/acceuilFragment">
 
 
     <fragment
@@ -29,5 +29,26 @@
         <action
             android:id="@+id/action_messageFragment_to_usersListFragment2"
             app:destination="@id/usersListFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/acceuilFragment"
+        android:name="ca.qc.chatproject.AcceuilFragment"
+        android:label="fragment_acceuil"
+        tools:layout="@layout/fragment_acceuil" >
+        <action
+            android:id="@+id/action_acceuilFragment_to_messagesListFragment"
+            app:destination="@id/messagesListFragment" />
+        <action
+            android:id="@+id/action_acceuilFragment_to_registerFragment"
+            app:destination="@id/registerFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/registerFragment"
+        android:name="ca.qc.chatproject.RegisterFragment"
+        android:label="fragment_register"
+        tools:layout="@layout/fragment_register" >
+        <action
+            android:id="@+id/action_registerFragment_to_acceuilFragment"
+            app:destination="@id/acceuilFragment" />
     </fragment>
 </navigation>

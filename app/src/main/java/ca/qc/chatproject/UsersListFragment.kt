@@ -64,7 +64,7 @@ class UsersListFragment : Fragment() {
 
         userViewModel.users.observe( viewLifecycleOwner,
             Observer {userResponse->usersAdapter.setUsers(userResponse.data)
-                Log.i("Message fragment ",   userResponse.data.joinToString { "\n ${it.login}   ${it.password}" })
+                Log.i("Message fragment ",   userResponse.data.joinToString { "\n  ${it.imageUrl} ${it.login}   ${it.nom}" })
               }
 
 

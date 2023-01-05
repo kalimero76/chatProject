@@ -1,31 +1,35 @@
 package ca.qc.chatproject.viewModels
 
 import android.util.Log
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import ca.qc.chatproject.models.ConnectResponse
 import ca.qc.chatproject.models.UserLoginData
 import ca.qc.chatproject.repository.UsersRepository
 import ca.qc.chatproject.models.GetAllUserResponse
 import ca.qc.chatproject.models.UserData
 import kotlinx.coroutines.launch
+import retrofit2.Response
 
 class UsersViewModel (private val usersRepository: UsersRepository): ViewModel() {
     val users: MutableLiveData<GetAllUserResponse> = MutableLiveData()  // login Response
     val addUsersMessage: MutableLiveData<String> = MutableLiveData()  // login Response
-
+    val  responseLogin : MutableLiveData<Response<ConnectResponse>> = MutableLiveData()
 
     init {
-        getUsers()
+      /// getUsers()
     }
 
-    fun getUsers() = viewModelScope.launch {
+    fun getUsers()  = viewModelScope.launch {
         try {
             val response = usersRepository.getUsers()
             Log.i("response message ", response.body()?.message.toString())
             if(response.isSuccessful){
                 users.postValue(response.body())
                 Log.i("response body ",response.body().toString()  )
+
             }
         }catch (e: java.lang.Exception){
             Log.i(javaClass.simpleName, e.message.toString())
@@ -36,7 +40,7 @@ class UsersViewModel (private val usersRepository: UsersRepository): ViewModel()
     fun addUser(user: UserData)= viewModelScope.launch {
         try {
             val response = usersRepository.addUser(user)
-            Log.i("response befor chek added ", response.body()?.message.toString() )
+
             if(response.isSuccessful){
             //    users.postValue(response.message)
                 Log.i("response added ",response.body().toString()  )
@@ -45,7 +49,28 @@ class UsersViewModel (private val usersRepository: UsersRepository): ViewModel()
             Log.i(javaClass.simpleName, e.message.toString())
         }
     }
+
+
+
+    fun userLoginRequest(loginData: UserLoginData)= viewModelScope.launch {
+        try {
+
+           val response = usersRepository.userLoginRequest(loginData)
+            responseLogin.postValue(response)
+
+            if(response.isSuccessful){
+                //    users.postValue(response.message)
+
+            }
+        }catch (e: java.lang.Exception){
+            Log.i(javaClass.simpleName, e.message.toString())
+        }
     }
+
+
+
+
+}
 
 
 

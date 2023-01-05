@@ -1,14 +1,13 @@
 package ca.qc.chatproject.network.api
 
 
-import ca.qc.chatproject.models.UserData
-import ca.qc.chatproject.models.GetAllUserResponse
-import ca.qc.chatproject.models.AddUserResponse
-import ca.qc.chatproject.models.UserConnectedResponse
+import ca.qc.chatproject.models.*
+import retrofit2.Callback
 import retrofit2.Response
 import retrofit2.http.Body
 import retrofit2.http.GET
 import retrofit2.http.POST
+import retrofit2.http.Query
 
 interface LoginApiService {
 
@@ -18,10 +17,14 @@ interface LoginApiService {
     @POST("/addUser")
     suspend fun addUser(
         @Body
-        user: UserData
+        user: UserData,
     ): Response<AddUserResponse>
 
-    @GET("/userLoginRequest")
-    suspend fun userLoginRequest(): Response<UserConnectedResponse>
+    @POST("/userLoginRequest")
+    suspend fun userLoginRequest(
+        @Body
+        userLoginData: UserLoginData,
+
+        ): Response<ConnectResponse>
 
 }

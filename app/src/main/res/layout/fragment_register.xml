@@ -1,12 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".RegisterActivity">
-
+    tools:context=".RegisterFragment">
     <TextView
         android:id="@+id/txtCreationCompte"
         android:layout_width="match_parent"
@@ -24,7 +22,7 @@
         android:id="@+id/txtLogin"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/txtMatricule"
+        android:text="@string/txtlogin"
         android:textSize="20sp"
         android:textStyle="bold" />
 
@@ -34,7 +32,7 @@
         android:layout_height="wrap_content"
         android:autofillHints=""
         android:ems="10"
-        android:hint="@string/txtIdmatricule"
+        android:hint="@string/txtregister"
         android:inputType="textPersonName"
         android:minHeight="48dp"
         android:textSize="14sp" />
@@ -58,15 +56,6 @@
         android:inputType="textPersonName"
         android:minHeight="48dp"
         android:textSize="14sp" />
-
-    <TextView
-        android:id="@+id/txtPrenom"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/txtPrenom"
-        android:textAllCaps="false"
-        android:textSize="20sp"
-        android:textStyle="bold" />
 
 
     <TextView
@@ -109,6 +98,18 @@
         android:textSize="14sp" />
 
     <Button
+        android:id="@+id/buttonLoadPicture"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_weight="0"
+        android:text="Load Picture" />
+    <ImageView
+        android:id="@+id/userPic"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1" />
+    <Button
         android:id="@+id/btnCreerCompteRegister"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -116,5 +117,8 @@
         android:text="@string/btnCreerCompte"
         android:textAlignment="center"
         android:textSize="20sp" />
+
+
+
 
 </LinearLayout>

@@ -8,17 +8,17 @@
 
     <string name="txtNcompte">Nouveau compte</string>
     <string name="txtConnexion">Connexion</string>
-    <string name="etMatricule">Identifiant</string>
+
     <string name="etPassword">Mot de passe</string>
     <string name="chkConnexion">Se souvenir de moi</string>
     <string name="txtBienvenue">Identifiez-vous!</string>
-    <string name="txtBooketco">Par Book et co</string>
+
     <string name="txtNom">Nom</string>
     <string name="txtIdnom">Entrer votre nom</string>
     <string name="txtPrenom">Prénom</string>
     <string name="txtIdprenom">Entrer votre prénom</string>
-    <string name="txtMatricule">Matricule</string>
-    <string name="txtIdmatricule">Entrer votre matricule</string>
+
+    <string name="txtlogin">Login</string>
     <string name="txtMotdepasse">Mot de passe</string>
     <string name="txtIdmotdepasse">Entrer votre mot de passe</string>
     <string name="txtConfirmer">Confirmer</string>
@@ -37,4 +37,10 @@
     <string name="usersFragment">users List Fragment</string>
     <string name="messagefragment">messagesFragment</string>
     <string name="messagesList">newmessages List Fragment</string>
+
+
+    <string name="txtregister"> Enregistrez vous</string>
+
+
+    <string name="messagesInvitation">Ecrire un message</string>
 </resources>

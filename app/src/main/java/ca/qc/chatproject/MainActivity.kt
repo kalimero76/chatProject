@@ -3,6 +3,7 @@ package ca.qc.chatproject
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.NavHostFragment
@@ -14,6 +15,7 @@ import ca.qc.chatproject.models.UserLoginData
 import ca.qc.chatproject.repository.UsersRepository
 import ca.qc.chatproject.viewModels.UsersViewModel
 import ca.qc.chatproject.viewModels.UsersViewModelProviderFactory
+import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class MainActivity : AppCompatActivity() {
 
@@ -33,6 +35,9 @@ class MainActivity : AppCompatActivity() {
 
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+       // val navBar: BottomNavigationView = findViewById(R.id.bottomNavView)
+      //  navBar.visibility = View.GONE
 
         binding.bottomNavView.setupWithNavController(navController)
 

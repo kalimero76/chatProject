@@ -4,9 +4,9 @@ import com.google.gson.annotations.SerializedName
 
 data class UserConnectedResponse(
     @SerializedName("statut")
-    val statut: String,
+    var statut: String,
     @SerializedName("message")
-    val message: String,
-    @SerializedName("userLoginData")
-    val  userLoginData:  UserLoginData
+    var message: String,
+    @SerializedName("userData")
+    var  userData:  UserData = UserData()
 )

@@ -38,7 +38,7 @@
         android:textSize="14sp" />
 
     <TextView
-        android:id="@+id/txtNom"
+        android:id="@+id/nomRegister"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/txtNom"
@@ -97,18 +97,19 @@
         android:textColorHint="#757575"
         android:textSize="14sp" />
 
-    <Button
-        android:id="@+id/buttonLoadPicture"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_weight="0"
-        android:text="Load Picture" />
     <ImageView
-        android:id="@+id/userPic"
-        android:layout_width="wrap_content"
+        android:id="@+id/user_photo"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:scaleType="centerInside"
+        android:cropToPadding="true"
+        android:background="@color/black"/>
+    <ImageButton
+        android:id="@+id/user_camera"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="1" />
+        android:scaleType="center"
+        android:src="@drawable/ic_camera"/>
     <Button
         android:id="@+id/btnCreerCompteRegister"
         android:layout_width="wrap_content"

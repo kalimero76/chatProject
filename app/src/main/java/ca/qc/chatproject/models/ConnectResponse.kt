@@ -5,7 +5,7 @@ import com.google.gson.annotations.SerializedName
 
 data class ConnectResponse(
     @SerializedName("data")
-    val `UserData`: UserData = UserData(),
+    val `userLoginData`: UserLoginData = UserLoginData(),
     @SerializedName("message")
     val message: String = ""
 )

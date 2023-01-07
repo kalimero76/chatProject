@@ -13,6 +13,8 @@ import android.widget.ImageView
 import androidx.fragment.app.Fragment
 import androidx.navigation.navGraphViewModels
 import ca.qc.chatproject.databinding.FragmentRegisterBinding
+import ca.qc.chatproject.models.UserData
+import ca.qc.chatproject.models.UserLoginData
 import ca.qc.chatproject.viewModels.UsersViewModel
 
 
@@ -35,9 +37,12 @@ class RegisterFragment : Fragment() {
     private var _binding: FragmentRegisterBinding?=null
     private val binding get() = _binding!!
 
-    lateinit var imageView: ImageView
-    lateinit var button: Button
-    private val pickImage = 100
+
+
+    private lateinit var loginData: UserLoginData
+    private lateinit var userData: UserData
+
+
     private var imageUri: Uri? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -53,54 +58,38 @@ class RegisterFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?,
     ): View? {
-
+        loginData = UserLoginData()
+        userData = UserData()
 
         _binding= FragmentRegisterBinding.inflate(inflater, container, false)
         val view = binding.root
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_register, container, false)
+        return view
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+binding.btnCreerCompteRegister.setOnClickListener{
 
-       binding.buttonLoadPicture.setOnClickListener{
-           imageChooser();
+    loginData.login = binding.loginRegister.text.toString()
+    loginData.password = binding.motpassRegister.getText().toString();
+    userData.nom = binding.nomRegister.text.toString()
+    userData.imageUrl ="userImage"
 
-       }
+    if (loginData.login.isNotEmpty() && loginData.password.isNotEmpty() && userData.nom.isNotEmpty() ) {
+        userViewModel.addUser(userData)
+        //userViewModel.
 
     }
 
-    fun imageChooser() {
+}
 
-        // create an instance of the
-        // intent of the type image
-        val i = Intent()
-        i.type = "image/*"
-        i.action = Intent.ACTION_GET_CONTENT
 
-        // pass the constant to compare it
-        // with the returned requestCode
-        startActivityForResult(Intent.createChooser(i, "Select Picture"),200)
     }
 
 
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-        if (resultCode == RESULT_OK) {
 
-            // compare the resultCode with the
-            // SELECT_PICTURE constant
-            if (requestCode == 200) {
-                // Get the url of the image from data
-                val selectedImageUri = data?.data
-                if (null != selectedImageUri) {
-                    // update the preview image in the layout
-                    binding.userPic.setImageURI(selectedImageUri)
-                }
-            }
-        }
-    }
+
 
 
 

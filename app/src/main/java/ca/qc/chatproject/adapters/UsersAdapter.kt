@@ -23,7 +23,7 @@ class UsersAdapter: RecyclerView.Adapter<UsersAdapter.UserViewHolder>() {
 
         fun bind(position: Int) {
             val user= users[position]
-            itemUserlogin.text=user.login
+            itemUserlogin.text=user.idUser.toString()
             itemUsernom.text= user.nom
 
 

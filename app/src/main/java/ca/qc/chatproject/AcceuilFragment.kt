@@ -65,7 +65,7 @@ class AcceuilFragment : Fragment() {
         _binding= FragmentAcceuilBinding.inflate(inflater, container, false)
         val view = binding.root
         loginData = UserLoginData()
-        userData = UserData()
+         userData = UserData()
         // Inflate the layout for this fragment
         return view
     }
@@ -99,8 +99,8 @@ class AcceuilFragment : Fragment() {
                    if(it.isSuccessful)
                        it.body()?.let {
                                it1 ->
-                           userData=it1.UserData
-                           if(userData.login!="")
+                           loginData=it1.userLoginData
+                           if(loginData.login!="")
                            {
                                Log.i("Login data ",userData.nom)
                        // R.id.action_acceuilFragment_to_messagesListFragment;;

@@ -52,6 +52,20 @@ class UsersViewModel (private val usersRepository: UsersRepository): ViewModel()
 
 
 
+    fun addUserLogin(userLogin: UserLoginData)= viewModelScope.launch {
+        try {
+            val response = usersRepository.addUserLogin(userLogin)
+
+            if(response.isSuccessful){
+                //    users.postValue(response.message)
+                Log.i("user login added ",response.body().toString()  )
+            }
+        }catch (e: java.lang.Exception){
+            Log.i(javaClass.simpleName, e.message.toString())
+        }
+    }
+
+
     fun userLoginRequest(loginData: UserLoginData)= viewModelScope.launch {
         try {
 

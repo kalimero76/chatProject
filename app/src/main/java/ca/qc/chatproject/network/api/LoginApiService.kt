@@ -27,4 +27,12 @@ interface LoginApiService {
 
         ): Response<ConnectResponse>
 
+
+    @POST("/addLoginUser")
+    suspend fun addUserLogin(
+        @Body
+        userLogin: UserLoginData,
+    ):  Response<AddUserResponse>
+
+
 }

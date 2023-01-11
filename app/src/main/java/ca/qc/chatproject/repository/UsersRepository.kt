@@ -8,7 +8,7 @@ class UsersRepository {
     suspend fun getUsers() = RetrofitInstance.retrofitService.getUsers()
     suspend fun addUser(user: UserData)= RetrofitInstance.retrofitService.addUser(user)
     suspend fun addUserLogin(userLogin: UserLoginData)= RetrofitInstance.retrofitService.addUserLogin(userLogin)
-    suspend fun userLoginRequest(user: UserLoginData)= RetrofitInstance.retrofitService.userLoginRequest(user)
+    suspend fun getUser(user: UserLoginData)= RetrofitInstance.retrofitService.getUser(user)
 }
 
 

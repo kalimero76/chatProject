@@ -6,18 +6,17 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.core.widget.addTextChangedListener
 import androidx.lifecycle.Observer
 import androidx.navigation.Navigation
+import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.navGraphViewModels
-import ca.qc.chatproject.databinding.FragmentAcceuilBinding
-import ca.qc.chatproject.databinding.FragmentUsersListBinding
+import ca.qc.chatproject.databinding.FragmentLoginBinding
 import ca.qc.chatproject.models.ConnectResponse
-import ca.qc.chatproject.models.UserConnectedResponse
 import ca.qc.chatproject.models.UserData
 import ca.qc.chatproject.models.UserLoginData
 import ca.qc.chatproject.viewModels.UsersViewModel
-import com.google.android.material.bottomnavigation.BottomNavigationView
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -29,18 +28,11 @@ private const val ARG_PARAM2 = "param2"
  * Use the [AcceuilFragment.newInstance] factory method to
  * create an instance of this fragment.
  */
-class AcceuilFragment : Fragment() {
-
-
-
-
-
-    private lateinit var loginData: UserLoginData
-    private lateinit var userData: UserData
+class LoginFragment : Fragment() {
 
 
     private val userViewModel: UsersViewModel by navGraphViewModels(R.id.messages_nav_graph)
-    private var _binding: FragmentAcceuilBinding?=null
+    private var _binding: FragmentLoginBinding?=null
     private val binding get() = _binding!!
 
     // TODO: Rename and change types of parameters
@@ -61,11 +53,8 @@ class AcceuilFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?,
     ): View? {
-
-        _binding= FragmentAcceuilBinding.inflate(inflater, container, false)
+        _binding= FragmentLoginBinding.inflate(inflater, container, false)
         val view = binding.root
-        loginData = UserLoginData()
-         userData = UserData()
         // Inflate the layout for this fragment
         return view
     }
@@ -85,45 +74,66 @@ class AcceuilFragment : Fragment() {
         }
 
         binding.btnConnexion.setOnClickListener {
-            loginData.login = binding.etlogin.text.toString()
-            loginData.password = binding.etPassword.getText().toString();
+            userViewModel.inputUsername.value = binding.etlogin.text.toString()
+            userViewModel.inputPassword.value =binding.etPassword.getText().toString();
 
-            if (loginData.login.isNotEmpty()) {
+           userViewModel.loginButton()
 
-                Log.i("Login data ",loginData.login)
-                Log.i("Login password ",loginData.password)
+            userViewModel.errotoast.observe(viewLifecycleOwner, Observer { hasError->
+               if(hasError==true){
+                    Toast.makeText(requireContext(), "Please fill all fields", Toast.LENGTH_SHORT).show()
+                   userViewModel.donetoast()
+                }
+            })
 
-                userViewModel.userLoginRequest(loginData)
+            userViewModel.errotoastUsername .observe(viewLifecycleOwner, Observer { hasError->
+                if(hasError==true){
+                    Toast.makeText(requireContext(), "User doesnt exist,please Register!", Toast.LENGTH_SHORT).show()
+                    userViewModel.donetoastErrorUsername()
+                }
+            })
 
-                userViewModel.responseLogin.observe(viewLifecycleOwner, Observer {
-                   if(it.isSuccessful)
-                       it.body()?.let {
-                               it1 ->
-                           loginData=it1.userLoginData
-                           if(loginData.login!="")
-                           {
-                               Log.i("Login data ",userData.nom)
-                       // R.id.action_acceuilFragment_to_messagesListFragment;;
-                               Navigation.findNavController(view).navigate(R.id.action_acceuilFragment_to_messagesListFragment);
-                           }
-                           else
-                           {
-                               binding.errorConnexiontxt.text="Erreur d'identification"
-                           }
-                    }
-                   })
-            }
+
+            userViewModel.errorToastInvalidPassword .observe(viewLifecycleOwner, Observer { hasError->
+                if(hasError==true){
+                    Toast.makeText(requireContext(), "Please check your Password !", Toast.LENGTH_SHORT).show()
+                    userViewModel.donetoastInvalidPassword()
+                }
+            })
+
+          userViewModel.navigatetoUsersMessages.observe(viewLifecycleOwner, Observer { hasFinished->
+                if (hasFinished == true){
+                    Log.i("MYTAG","insidi observe")
+                    Toast.makeText(requireContext(), "Login success", Toast.LENGTH_SHORT).show()
+                    displayUsersMessagesList()
+                    userViewModel.doneNavigatingUserMessages()
+                }
+            })
         }
 
         binding.btnNcompte.setOnClickListener{
-
-            Navigation.findNavController(view).navigate(R.id.action_acceuilFragment_to_registerFragment);
-
+            Toast.makeText(requireContext(), "nouveaucommpt click", Toast.LENGTH_SHORT).show()
+            navigateToRegisterFragment()
+           userViewModel.doneNavigatingRegiter()
         }
+    }
 
 
+    private fun displayUsersMessagesList() {
+        Log.i("MYTAG","insidisplayUsersList")
+        val action = LoginFragmentDirections.actionLoginFragmentToMessagesListFragment()
+        NavHostFragment.findNavController(this).navigate(action)
 
     }
+
+    private fun navigateToRegisterFragment() {
+        Log.i("MYTAG","insidisplayUsersList")
+        val action = LoginFragmentDirections.actionLoginFragmentToRegisterFragment()
+        NavHostFragment.findNavController(this).navigate(action)
+    }
+
+
+
 
 
     override fun onDestroyView() {
@@ -143,7 +153,7 @@ class AcceuilFragment : Fragment() {
         // TODO: Rename and change types and number of parameters
         @JvmStatic
         fun newInstance(param1: String, param2: String) =
-            AcceuilFragment().apply {
+            LoginFragment().apply {
                 arguments = Bundle().apply {
                     putString(ARG_PARAM1, param1)
                     putString(ARG_PARAM2, param2)

@@ -5,12 +5,16 @@ import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ImageView
+import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
+import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.navGraphViewModels
 import ca.qc.chatproject.databinding.FragmentRegisterBinding
 import ca.qc.chatproject.models.UserData
@@ -39,9 +43,6 @@ class RegisterFragment : Fragment() {
 
 
 
-    private lateinit var loginData: UserLoginData
-    private lateinit var userData: UserData
-
 
     private var imageUri: Uri? = null
 
@@ -58,8 +59,6 @@ class RegisterFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?,
     ): View? {
-        loginData = UserLoginData()
-        userData = UserData()
 
         _binding= FragmentRegisterBinding.inflate(inflater, container, false)
         val view = binding.root
@@ -69,28 +68,53 @@ class RegisterFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+
+
+
 binding.btnCreerCompteRegister.setOnClickListener{
 
-    loginData.login = binding.loginRegister.text.toString()
-    loginData.password = binding.motpassRegister.getText().toString();
-    userData.nom = binding.nomRegister.text.toString()
-    userData.imageUrl ="userImage"
+    userViewModel.inputRegisterUsername .value = binding.loginRegister.text.toString()
+    userViewModel.inputRegisterPassword.value= binding.motpassRegister.getText().toString();
+    userViewModel.inputRegisterFirstName.value= binding.nomRegister.text.toString()
+    userViewModel.inputImageUrl.value="image.jpg"
 
-    if (loginData.login.isNotEmpty() && loginData.password.isNotEmpty() && userData.nom.isNotEmpty() ) {
-        userViewModel.addUser(userData)
-        //userViewModel.
 
-    }
+    userViewModel.registerButton()
+
+    userViewModel.errotoast.observe(viewLifecycleOwner, Observer { hasError->
+        if(hasError==true){
+            Toast.makeText(requireContext(), "Please fill all fields", Toast.LENGTH_SHORT).show()
+            userViewModel.donetoast()
+        }
+    })
+
+    userViewModel.errortoastUsernameExist.observe(viewLifecycleOwner, Observer { hasError->
+        if(hasError==true){
+            Toast.makeText(requireContext(), "Login already exists", Toast.LENGTH_SHORT).show()
+            userViewModel.donetoastErrorUsernameExist()
+        }
+    })
+
+
+    userViewModel.successToastRegister.observe(viewLifecycleOwner, Observer { hasFinished->
+        if (hasFinished == true){
+            Log.i("MYTAG","insidi observe")
+            Toast.makeText(requireContext(), "User added with success", Toast.LENGTH_SHORT).show()
+            navigateToLoginFragment()
+            userViewModel.doneAddingUserMessages()
+        }
+    })
 
 }
-
-
     }
 
 
-
-
-
+    private fun navigateToLoginFragment() {
+        Log.i("MYTAG","insidisplayUsersList")
+        val action = RegisterFragmentDirections.actionRegisterFragmentToLoginFragment()
+        NavHostFragment.findNavController(this).navigate(action)
+    }
 
 
         companion object {

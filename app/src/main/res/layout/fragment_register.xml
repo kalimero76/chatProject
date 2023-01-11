@@ -38,7 +38,7 @@
         android:textSize="14sp" />
 
     <TextView
-        android:id="@+id/nomRegister"
+        android:id="@+id/txtnomRegister"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/txtNom"
@@ -47,7 +47,7 @@
         android:textStyle="bold" />
 
     <EditText
-        android:id="@+id/txtIdnom"
+        android:id="@+id/nomRegister"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:autofillHints=""
@@ -73,29 +73,12 @@
         android:autofillHints=""
         android:ems="10"
         android:hint="@string/txtIdmotdepasse"
-        android:inputType="textPersonName"
+        android:inputType="textPassword"
         android:minHeight="48dp"
         android:textSize="14sp" />
 
-    <TextView
-        android:id="@+id/txtConfirmer"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/txtConfirmer"
-        android:textSize="20sp"
-        android:textStyle="bold" />
 
-    <EditText
-        android:id="@+id/confirmerRegister"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:autofillHints=""
-        android:ems="10"
-        android:hint="@string/txtIdconfirmer"
-        android:inputType="textPersonName"
-        android:minHeight="48dp"
-        android:textColorHint="#757575"
-        android:textSize="14sp" />
+
 
     <ImageView
         android:id="@+id/user_photo"

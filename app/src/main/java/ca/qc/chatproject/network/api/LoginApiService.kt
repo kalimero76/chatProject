@@ -20,11 +20,10 @@ interface LoginApiService {
         user: UserData,
     ): Response<AddUserResponse>
 
-    @POST("/userLoginRequest")
-    suspend fun userLoginRequest(
+    @POST("/getUser")
+    suspend fun getUser(
         @Body
         userLoginData: UserLoginData,
-
         ): Response<ConnectResponse>
 
 
@@ -33,6 +32,8 @@ interface LoginApiService {
         @Body
         userLogin: UserLoginData,
     ):  Response<AddUserResponse>
+
+
 
 
 }
